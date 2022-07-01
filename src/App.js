@@ -14,21 +14,30 @@ function App() {
     const request = 3;
     const response = await deso.identity.login(request);
     setPublicKey(response.key);
-    console.log(response)
-    return response;
+    console.log(response.key)
 }
 
   const logOut = async () => {
     const deso = new Deso();
-    const request = null;
+    const request = publicKey;
     const response = await deso.identity.logout(request);
+    setPublicKey('');
+}
+
+const fetchPost = async () => {
+  const deso = new Deso();
+  const request = {
+  "PostHashHex": "ca2feea1e28431b61450222b8d2828c6da8ae5ce32a79791abda36c6ad78df03"
+};
+ const response = await deso.posts.getSinglePost(request);
+ console.log(response)
 }
 
 //logout not working
-//when signing in with side button the key does not log
-//having trouble with state
 //page routing for when user is logged in create logged in boolean flag
-//mobile version looks like shit
+//embed diamond post for home page
+//database && link generation
+//NFT Concert Tickets*
 
 
  const [publicKey, setPublicKey] = useState('');
@@ -36,16 +45,19 @@ function App() {
   return (
     <div className="App bg-grey w-screen h-screen">
       <Navbar/>    
+      
       <Artboard/>
-      <div class="mr-48">
-      <button onClick={fetchLogin}>Login</button>
-      <h1></h1>
-      <button onClick={() => console.log(publicKey)}>{publicKey}Log Key</button>
-      <h1> </h1>
-      <button onClick={logOut}>LogOut</button>
+
+      <div className="flex flex-col">
+      
+      <button onClick={fetchLogin}>Login</button>    
+      <button onClick={() => console.log(publicKey)}>{publicKey}Log Key</button>    
+      <button >LogOut</button>
+      
       </div>
 
-
+      <button onClick={fetchPost}>ca2feea1e28431b61450222b8d2828c6da8ae5ce32a79791abda36c6ad78df03</button>
+      
       
       
     </div>
