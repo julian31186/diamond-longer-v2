@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react';
 import Deso from 'deso-protocol';
 import { useState } from 'react';
+import {BrowserRouter as Router, Route, Switch , Link} from 'react-router-dom';
 
 const Navbar = () =>  {
 
@@ -23,7 +24,7 @@ const [publicKey, setPublicKey] = useState();
     
     <div className="flex gap-2">
     <button className="btn btn-ghost text-twitblue ">Account</button>
-    <button onClick={fetchLogin} className="btn bg-twitblue border-0 btn-active text-white hover:bg-gray-400">Write a Post</button>
+    <Link to="/post"> <button onClick={fetchLogin} className="btn bg-twitblue border-0 btn-active text-white hover:bg-gray-400">Write a Post</button></Link>   
     </div>
     
   </div>

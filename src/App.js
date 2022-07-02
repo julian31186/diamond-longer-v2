@@ -5,6 +5,8 @@ import Deso from 'deso-protocol';
 import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Artboard from './components/Artboard';
+import Post from './components/Post';
+import {BrowserRouter as Router, Route, Switch , Link} from 'react-router-dom';
 
 
 function App() {
@@ -24,14 +26,6 @@ function App() {
     setPublicKey('');
 }
 
-const fetchPost = async () => {
-  const deso = new Deso();
-  const request = {
-  "PostHashHex": "ca2feea1e28431b61450222b8d2828c6da8ae5ce32a79791abda36c6ad78df03"
-};
- const response = await deso.posts.getSinglePost(request);
- console.log(response)
-}
 
 //logout not working
 //page routing for when user is logged in create logged in boolean flag
@@ -43,25 +37,23 @@ const fetchPost = async () => {
  const [publicKey, setPublicKey] = useState('');
 
   return (
+    <Router>
+
     <div className="App bg-grey w-screen h-screen">
       <Navbar/>    
-      
-      <Artboard/>
 
-      <div className="flex flex-col">
-      
-      <button onClick={fetchLogin}>Login</button>    
-      <button onClick={() => console.log(publicKey)}>{publicKey}Log Key</button>    
-      <button >LogOut</button>
-      
-      </div>
+      <Switch>
+        <Route exact path="/">
+          <Artboard/>
+        </Route>
 
-      <button onClick={fetchPost}>ca2feea1e28431b61450222b8d2828c6da8ae5ce32a79791abda36c6ad78df03</button>
-      
-      
-      
+        <Route exact path="/post">
+          <Post/>
+        </Route>
+      </Switch>
+
     </div>
-    
+    </Router>
   );
 }
 
