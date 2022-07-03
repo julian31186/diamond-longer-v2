@@ -25,7 +25,7 @@ const Post = () => {
        setContent('');
        setCharCount(0);
       }
-
+//ddd
       const updateContentCount = (e) => {
         setContent(e.target.value);
         setCharCount(e.target.value.length);
