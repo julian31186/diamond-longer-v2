@@ -17,6 +17,7 @@ const Post = () => {
     
     //getting profile pic and all account info when loggin is done in a different componenet   
     //awaitng login before routing to post page
+    //making sure users can only go to post route if they are logged in
 
     return(
         <div className="flex mt-10 justify-center gap-6">
@@ -29,9 +30,9 @@ const Post = () => {
                 </div>
 
                 <div>
-                <input type="text" placeholder="Title" class="mt-4 input input-bordered w-full " />
+                <input type="text" placeholder="Title" className="mt-4 input input-bordered w-full " />
                 <textarea onChange={e => setCharCount(e.target.value.length)} className="mt-4 input input-bordered w-full h-96" placeholder="Write your post here..."></textarea>
-                <button class="btn btn-info w-full">Post It</button>
+                <button className="btn btn-info w-full">Post It</button>
                 </div>
 
             </div>

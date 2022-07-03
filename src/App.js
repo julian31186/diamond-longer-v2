@@ -6,7 +6,8 @@ import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Artboard from './components/Artboard';
 import Post from './components/Post';
-import {BrowserRouter as Router, Route, Switch , Link} from 'react-router-dom';
+import { isLoggedIn } from './components/Artboard';
+import {BrowserRouter as Router, Route, Routes , Link , Navigate} from 'react-router-dom';
 
 
 function App() {
@@ -35,6 +36,8 @@ function App() {
 
 
  const [publicKey, setPublicKey] = useState('');
+ const [loggedIn, setLoggedIn] = useState(false);
+
 
   return (
     <Router>
@@ -42,15 +45,24 @@ function App() {
     <div className="App bg-grey w-screen h-screen">
       <Navbar/>    
 
-      <Switch>
-        <Route exact path="/">
+      <Routes>
+        <Route path="/" element={
+        <div>
           <Artboard/>
-        </Route>
+          <button onClick={() => {
+            setLoggedIn(true)
+            console.log(loggedIn)
+          }}>LogIn</button>
+          <button onClick={() => {
+            setLoggedIn(false) 
+            console.log(loggedIn)
+          }}>LogOut</button>
+        </div>
+      }/>
 
-        <Route exact path="/post">
-          <Post/>
-        </Route>
-      </Switch>
+        <Route path="/post" element={<Post></Post>}/>
+          
+      </Routes>
 
     </div>
     </Router>
