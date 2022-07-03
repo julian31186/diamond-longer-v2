@@ -41,7 +41,7 @@ const Artboard = () => {
                 
                 
                <div className="flex flex-row mt-2 gap-2 pb-8 border-b-2">
-               <button onClick={fetchLogin} className="ml-4 btn bg-twitblue border-0 btn-active text-white hover:bg-gray-400 gap-2 mt-5"><Icon height="20" width="24" icon="fa:diamond"/>Sign in with DeSo</button>
+               <Link to="/post"> <button onClick={fetchLogin} className="ml-4 btn bg-twitblue border-0 btn-active text-white hover:bg-gray-400 gap-2 mt-5"><Icon height="20" width="24" icon="fa:diamond"/>Sign in with DeSo</button></Link>
                <p className="mt-7" >DiamondLonger is the easy way to share long messages</p>
                </div>   
 
@@ -54,7 +54,7 @@ const Artboard = () => {
             </div>
             <div className="rounded-md bg-white w-64 h-32 ">
                 <p className="flex justify-center mt-4 border-b-2">Get Started</p>
-                <button onClick={fetchLogin} className="ml-4 btn bg-twitblue border-0 btn-active text-white hover:bg-gray-400 gap-2 mt-5"><Icon height="20" width="24" icon="fa:diamond"/>Sign in with DeSo</button>
+                <Link to="/post"><button onClick={fetchLogin} className="ml-4 btn bg-twitblue border-0 btn-active text-white hover:bg-gray-400 gap-2 mt-5"><Icon height="20" width="24" icon="fa:diamond"/>Sign in with DeSo</button></Link>
             
                
             </div>

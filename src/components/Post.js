@@ -9,11 +9,32 @@ const Post = () => {
     const [title,setTitle] = useState('');
     const [content,setContent] = useState('');
 
-    const getProfilePic = async () => {
+
+    const submitPost = async (post) => {
         const deso = new Deso();
-        const request = "BC1YLgze5LxcM1Gf4oCxA4cUvzoj6hnftXtv4rc3s7JBmbS9fM5F8fk";
-        const response = await deso.user.getSingleProfilePicture(request);
-    }
+        const request = {
+        "UpdaterPublicKeyBase58Check": "BC1YLgze5LxcM1Gf4oCxA4cUvzoj6hnftXtv4rc3s7JBmbS9fM5F8fk",
+        "BodyObj": {
+          "Body": `${content}`,
+          "VideoURLs": [],
+          "ImageURLs": []
+        }
+      };
+       const response = await deso.posts.submitPost(request);
+       setTitle('');
+       setContent('');
+       setCharCount(0);
+      }
+
+      const updateContentCount = (e) => {
+        setContent(e.target.value);
+        setCharCount(e.target.value.length);
+      }
+
+      const addTitle = (e) => {
+        setTitle(e.target.value);
+      }
+      
     
     //getting profile pic and all account info when loggin is done in a different componenet   
     //awaitng login before routing to post page
@@ -30,9 +51,9 @@ const Post = () => {
                 </div>
 
                 <div>
-                <input type="text" placeholder="Title" className="mt-4 input input-bordered w-full " />
-                <textarea onChange={e => setCharCount(e.target.value.length)} className="mt-4 input input-bordered w-full h-96" placeholder="Write your post here..."></textarea>
-                <button className="btn btn-info w-full">Post It</button>
+                <input onChange={e => addTitle(e)} value={title} type="text" placeholder="Title (Not for diamond)" className="mt-4 input input-bordered w-full " />
+                <textarea  value={content} onChange={e => updateContentCount(e)} className="mt-4 input input-bordered w-full h-96" placeholder="Write your post here..."></textarea>
+                <button  onClick={submitPost} className="btn btn-info w-full">Post It</button>
                 </div>
 
             </div>

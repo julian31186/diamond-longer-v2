@@ -20,7 +20,7 @@ const [publicKey, setPublicKey] = useState();
     return(
         <div className="navbar bg-base-100">
   <div className="flex-1 justify-evenly">
-    <a className="btn btn-ghost normal-case text-xl gap-1 text-twitblue"> <Icon height="20" width="24" icon="fa:diamond"/> DiamondLonger</a>
+    <Link to="/"><a className="btn btn-ghost normal-case text-xl gap-1 text-twitblue"> <Icon height="20" width="24" icon="fa:diamond"/> DiamondLonger</a></Link>
     
     <div className="flex gap-2">
     <button className="btn btn-ghost text-twitblue ">Account</button>

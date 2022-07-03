@@ -28,11 +28,15 @@ function App() {
 }
 
 
+
+
+
 //logout not working
 //page routing for when user is logged in create logged in boolean flag
 //embed diamond post for home page
 //database && link generation
 //NFT Concert Tickets*
+//dyanmically insert user address when submiting post so it posts to the right users account
 
 
  const [publicKey, setPublicKey] = useState('');
@@ -46,19 +50,7 @@ function App() {
       <Navbar/>    
 
       <Routes>
-        <Route path="/" element={
-        <div>
-          <Artboard/>
-          <button onClick={() => {
-            setLoggedIn(true)
-            console.log(loggedIn)
-          }}>LogIn</button>
-          <button onClick={() => {
-            setLoggedIn(false) 
-            console.log(loggedIn)
-          }}>LogOut</button>
-        </div>
-      }/>
+        <Route path="/" element={<Artboard/>}/>
 
         <Route path="/post" element={<Post></Post>}/>
           
